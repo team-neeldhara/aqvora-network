@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+.next/
+out/
+dist/
+
+# Java / Spring Boot
+target/
+*.class
+
+# Environment files / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

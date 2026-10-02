@@ -1,0 +1,307 @@
+-- ============================================================
+-- AQUORA / NEELDHAARA
+-- Database Verification Queries
+-- ============================================================
+
+USE neeldhaara;
+
+
+-- ============================================================
+-- 1. CHECK DATABASE
+-- ============================================================
+
+SELECT DATABASE() AS current_database;
+
+
+-- ============================================================
+-- 2. CHECK TABLE EXISTS
+-- ============================================================
+
+SHOW TABLES;
+
+
+-- ============================================================
+-- 3. CHECK TABLE STRUCTURE
+-- ============================================================
+
+DESCRIBE borewell_readings;
+
+
+-- ============================================================
+-- 4. VIEW LATEST READINGS
+-- ============================================================
+
+SELECT
+    id,
+    device_id,
+    dt,
+    timestamp,
+    district,
+    village,
+    latitude,
+    longitude,
+    water_level,
+    voltage_rms,
+    current_rms,
+    power_factor,
+    frequency,
+    unbalance_pct,
+    health_score,
+    anomaly_score,
+    confidence,
+    dynamic_threshold,
+    active_fault,
+    concept_drift_detected
+FROM borewell_readings
+ORDER BY id DESC
+LIMIT 20;
+
+
+-- ============================================================
+-- 5. CHECK TOTAL NUMBER OF READINGS
+-- ============================================================
+
+SELECT
+    COUNT(*) AS total_readings
+FROM borewell_readings;
+
+
+-- ============================================================
+-- 6. CHECK READINGS PER BOREWELL
+-- ============================================================
+
+SELECT
+    device_id,
+    COUNT(*) AS total_readings
+FROM borewell_readings
+GROUP BY device_id
+ORDER BY device_id;
+
+
+-- ============================================================
+-- 7. CHECK UNIQUE BOREWELL LOCATIONS
+--    Used by Mapbox / Dashboard
+-- ============================================================
+
+SELECT
+    device_id,
+    district,
+    village,
+    latitude,
+    longitude
+FROM borewell_readings
+GROUP BY
+    device_id,
+    district,
+    village,
+    latitude,
+    longitude
+ORDER BY device_id;
+
+
+-- ============================================================
+-- 8. CHECK LATEST READING FOR EACH BOREWELL
+-- ============================================================
+
+SELECT
+    r.device_id,
+    r.timestamp,
+    r.district,
+    r.village,
+    r.latitude,
+    r.longitude,
+    r.water_level,
+    r.current_rms,
+    r.power_factor,
+    r.health_score,
+    r.anomaly_score,
+    r.active_fault
+FROM borewell_readings r
+INNER JOIN (
+    SELECT
+        device_id,
+        MAX(id) AS latest_id
+    FROM borewell_readings
+    GROUP BY device_id
+) latest
+ON r.id = latest.latest_id
+ORDER BY r.device_id;
+
+
+-- ============================================================
+-- 9. CHECK FAULT DISTRIBUTION
+-- ============================================================
+
+SELECT
+    active_fault,
+    COUNT(*) AS occurrences
+FROM borewell_readings
+GROUP BY active_fault
+ORDER BY occurrences DESC;
+
+
+-- ============================================================
+-- 10. CHECK READINGS WITH FAULTS
+-- ============================================================
+
+SELECT
+    id,
+    device_id,
+    timestamp,
+    district,
+    village,
+    water_level,
+    current_rms,
+    frequency,
+    unbalance_pct,
+    health_score,
+    anomaly_score,
+    confidence,
+    active_fault
+FROM borewell_readings
+WHERE active_fault IS NOT NULL
+  AND active_fault <> 'NONE'
+ORDER BY id DESC;
+
+
+-- ============================================================
+-- 11. CHECK LOW WATER LEVEL READINGS
+-- ============================================================
+
+SELECT
+    id,
+    device_id,
+    timestamp,
+    district,
+    village,
+    water_level,
+    current_rms,
+    health_score,
+    anomaly_score,
+    active_fault
+FROM borewell_readings
+WHERE water_level < 30
+ORDER BY water_level ASC;
+
+
+-- ============================================================
+-- 12. CHECK ABNORMAL MOTOR CURRENT
+-- ============================================================
+
+SELECT
+    id,
+    device_id,
+    timestamp,
+    current_rms,
+    voltage_rms,
+    power_factor,
+    frequency,
+    unbalance_pct,
+    health_score,
+    active_fault
+FROM borewell_readings
+WHERE current_rms > 12
+ORDER BY current_rms DESC;
+
+
+-- ============================================================
+-- 13. CHECK MAPBOX LOCATION DATA
+-- ============================================================
+
+SELECT
+    device_id,
+    district,
+    village,
+    latitude,
+    longitude
+FROM borewell_readings
+WHERE latitude IS NOT NULL
+  AND longitude IS NOT NULL
+ORDER BY device_id;
+
+
+-- ============================================================
+-- 14. CHECK FOR MISSING IMPORTANT DATA
+-- ============================================================
+
+SELECT
+    COUNT(*) AS total_rows,
+
+    SUM(device_id IS NULL) AS missing_device_id,
+    SUM(timestamp IS NULL) AS missing_timestamp,
+    SUM(district IS NULL) AS missing_district,
+    SUM(village IS NULL) AS missing_village,
+    SUM(latitude IS NULL) AS missing_latitude,
+    SUM(longitude IS NULL) AS missing_longitude,
+    SUM(water_level IS NULL) AS missing_water_level,
+    SUM(current_rms IS NULL) AS missing_current,
+    SUM(health_score IS NULL) AS missing_health_score,
+    SUM(active_fault IS NULL) AS missing_fault
+
+FROM borewell_readings;
+
+
+-- ============================================================
+-- 15. CHECK RECENT DATA FLOW
+-- ============================================================
+
+SELECT
+    id,
+    device_id,
+    timestamp,
+    water_level,
+    current_rms,
+    power_factor,
+    health_score,
+    anomaly_score,
+    active_fault
+FROM borewell_readings
+ORDER BY timestamp DESC
+LIMIT 10;
+
+
+-- ============================================================
+-- 16. CHECK DATA FOR A PARTICULAR BOREWELL
+--    Example: BW003
+-- ============================================================
+
+SELECT *
+FROM borewell_readings
+WHERE device_id = 'BW003'
+ORDER BY id DESC
+LIMIT 10;
+
+
+-- ============================================================
+-- 17. CHECK DATA BY DISTRICT
+-- ============================================================
+
+SELECT
+    district,
+    COUNT(DISTINCT device_id) AS borewell_count,
+    COUNT(*) AS total_readings
+FROM borewell_readings
+GROUP BY district
+ORDER BY district;
+
+
+-- ============================================================
+-- 18. CHECK HEALTH / ANOMALY INFORMATION
+-- ============================================================
+
+SELECT
+    device_id,
+    timestamp,
+    health_score,
+    anomaly_score,
+    confidence,
+    dynamic_threshold,
+    active_fault
+FROM borewell_readings
+ORDER BY id DESC
+LIMIT 20;
+
+
+-- ============================================================
+-- END OF VERIFICATION QUERIES
+-- ============================================================
