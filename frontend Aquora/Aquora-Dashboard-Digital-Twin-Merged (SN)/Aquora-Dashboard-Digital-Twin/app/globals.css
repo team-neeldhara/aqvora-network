@@ -1,0 +1,681 @@
+:root{--ink:#163d37;--deep:#123f35;--muted:#6c7b76;--green:#2f7d56;--green2:#3f9a63;--green-soft:#e8f4e8;--blue:#2795d5;--blue-soft:#e8f5fc;--amber:#d99b1c;--amber-soft:#fff2d1;--paper:#f8faf6;--line:#e1e8e1;--shadow:0 8px 24px rgba(38,75,55,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f7f3;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{text-decoration:none;color:inherit}button{font:inherit}.app-shell{min-height:100vh;display:flex;background:#f5f7f3}.sidebar{width:252px;flex:0 0 252px;min-height:100vh;background:#fbfcf8;border-right:1px solid #e4e9e3;display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;z-index:40;padding:24px 16px 0}.brand{display:flex;gap:10px;align-items:center;padding:2px 7px 26px}.brand-mark{width:44px;height:44px;border-radius:15px;background:#e6f3e8;color:#2e8b5d;display:grid;place-items:center;position:relative}.brand-mark svg:last-child{position:absolute;right:-2px;bottom:0}.brand b{display:block;font-size:23px;line-height:1;font-weight:800;letter-spacing:-.7px;color:#17623f}.brand span{display:block;color:#74817c;font-size:10px;margin-top:5px}.sidebar nav{display:grid;gap:4px}.nav-item{display:flex;align-items:center;gap:14px;padding:12px 13px;border-radius:12px;color:#244a44;font-size:14px;font-weight:500}.nav-item:hover{background:#eef6ee}.nav-item.active{background:#e1f1e3;color:#17603e;font-weight:700}.twin-nav{margin-top:7px;background:#f0f7f0;border:1px solid #dcebdd}.new-badge{margin-left:auto;font-size:8px;line-height:1;background:#2f8059;color:#fff;border-radius:20px;padding:4px 6px;letter-spacing:.6px}.sidebar-art{margin-top:auto;height:265px;position:relative;overflow:hidden;border-radius:18px 18px 0 0;background:#e6f0df}.sidebar-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}.sidebar-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(245,249,241,.82) 100%)}.sidebar-slogan{position:absolute;z-index:2;left:18px;bottom:22px;color:#286b49;font-family:cursive;font-size:15px;line-height:1.45;transform:rotate(-2deg)}.content{margin-left:252px;width:calc(100% - 252px);min-width:0;position:relative}.hero{height:316px;position:relative;overflow:hidden;background:#dfeee7}.hero-photo{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(248,252,249,.08),rgba(255,255,255,.02)),url('/assets/farm-header.jpg');background-size:cover;background-position:center top}.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:42px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.7))}.topbar{height:157px;position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px 32px 28px}.greeting{display:flex;align-items:center;gap:13px}.sun-orb{width:48px;height:48px;border-radius:50%;background:#fff0c8;color:#e8aa27;display:grid;place-items:center;flex:none}.greeting h1{font-size:25px;line-height:1.12;margin:0;font-weight:800;letter-spacing:-.7px;color:#123e36}.greeting p{margin:6px 0 0;color:#506861;font-size:13px}.top-actions{display:flex;align-items:center;gap:20px;color:#244a44;font-size:12px}.top-actions>span{display:flex;align-items:center;gap:7px}.weather-mini{display:grid!important;grid-template-columns:24px auto;column-gap:6px}.weather-mini svg{grid-row:1 / span 2;color:#e7a623}.weather-mini small{grid-column:2;color:#6d7b76;margin-top:-4px}.profile{display:flex;align-items:center;gap:9px;padding-left:18px;border-left:1px solid rgba(41,77,61,.18)}.profile b,.profile small{display:block}.profile b{font-size:13px}.profile small{font-size:10px;color:#71817b;margin-top:2px}.avatar{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#dcefdc,#a8c9a9);color:#256849;font-size:11px;font-weight:800;border:2px solid rgba(255,255,255,.85)}.menu-btn,.mobile-close{display:none}.metric-grid{position:absolute;z-index:7;left:20px;right:20px;bottom:12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.status-card{min-height:146px;border:1px solid rgba(225,233,226,.9);border-radius:17px;background:rgba(255,255,255,.97);box-shadow:0 9px 25px rgba(41,77,56,.12);padding:18px;display:flex;gap:15px;align-items:flex-start}.status-icon{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;flex:none}.status-card.blue .status-icon{background:#def1fd;color:#2795d8}.status-card.green .status-icon{background:#e4f4e1;color:#318053}.status-card.amber .status-icon{background:#fff0c9;color:#d99615}.status-copy span{display:block;color:#52665f;font-size:13px}.status-copy strong{display:block;font-size:28px;line-height:1.1;margin:7px 0 9px;color:#143e38;letter-spacing:-.6px}.status-copy small{font-size:10px;color:#24764d;background:#eaf7ea;border-radius:30px;padding:5px 8px;display:inline-block}.status-card.blue .status-copy small{color:#2476a3;background:#e6f4fc}.status-card.amber .status-copy small{color:#9d6b0e;background:#fff3d8}.page-inner{position:relative;z-index:2;padding:18px 20px 42px}.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.95fr) minmax(235px,.82fr) minmax(270px,1.02fr);gap:14px;align-items:start}.main-column,.middle-column,.right-column{min-width:0;display:grid;gap:14px;align-content:start}.card{background:rgba(255,255,255,.98);border:1px solid #e1e8e1;border-radius:17px;box-shadow:var(--shadow)}.farm-card{overflow:hidden}.farm-photo{height:385px;position:relative;background:url('/assets/farm-scene.jpg') center/cover no-repeat}.farm-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent 50%,rgba(18,66,47,.06));pointer-events:none}.farm-photo-title{position:absolute;z-index:3;left:20px;top:18px;display:flex;align-items:center;gap:7px;padding:10px 13px;background:rgba(255,255,255,.93);border-radius:12px;font-size:16px;font-weight:800;color:#19543e;box-shadow:0 5px 16px rgba(35,72,53,.12)}.dynamic-water-label{position:absolute;z-index:5;left:43%;bottom:39px;display:flex;align-items:center;gap:7px;padding:8px 10px;background:rgba(28,101,133,.86);color:#fff;border-radius:10px;font-size:9px;box-shadow:0 5px 15px rgba(22,80,105,.15)}.dynamic-water-label b{font-size:13px}.farm-live{position:absolute;z-index:4;left:18px;bottom:16px;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.9);color:#2f7651;border-radius:18px;padding:7px 10px;font-size:9px}.farm-live.fault{color:#a34e32}.digital-twin-pill{position:absolute;z-index:5;right:17px;bottom:15px;display:flex;align-items:center;gap:5px;background:#fff;color:#25684b;border:1px solid #dce9dc;border-radius:22px;padding:9px 11px;font-size:10px;font-weight:800;box-shadow:0 7px 17px rgba(38,75,53,.13)}.digital-twin-pill:hover{background:#f1f8f1}.below-farm{display:grid;grid-template-columns:1fr;gap:14px}.trend-card,.fields-card,.telemetry-card,.ml-card,.borewell-info-card{padding:17px}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.section-head.compact{align-items:center}.section-head h2{font-size:15px;margin:5px 0 0;letter-spacing:-.2px}.section-head>span{font-size:9px;color:#6d7d77}.eyebrow{display:flex;align-items:center;gap:5px;color:#2d6e4e;font-size:9px;font-weight:800;letter-spacing:.35px}.select-look{display:flex;align-items:center;gap:3px;border:1px solid #e2e9e2;border-radius:15px;padding:5px 7px!important}.chart-wrap{margin-top:10px}.water-chart{width:100%;height:165px;overflow:visible}.water-chart text{font-size:9px;fill:#77847f}.grid-line{stroke:#e6ece7;stroke-width:1}.chart-line{fill:none;stroke:#2697d7;stroke-width:2.3}.chart-dot{fill:#fff;stroke:#2697d7;stroke-width:2}.chart-pill{fill:#2697d7}.pill-text{fill:#fff!important;font-weight:800}.demo-note{margin:0;color:#84908c;font-size:8px;line-height:1.45}.field-list{margin-top:9px}.field-row{display:grid;grid-template-columns:45px minmax(0,1fr) auto 16px;gap:8px;align-items:center;padding:8px 0;border-top:1px solid #edf0ed}.field-row:first-child{border-top:0}.field-thumb{width:45px;height:37px;border-radius:8px;overflow:hidden}.field-thumb img{width:100%;height:100%;object-fit:cover}.field-thumb.ft2 img{object-position:60% 50%}.field-thumb.ft3 img{object-position:80% 70%}.field-row b,.field-row small{display:block}.field-row b{font-size:10px}.field-row small{font-size:9px;color:#788680;margin-top:2px}.status{font-size:8px;color:#24764d;background:#eaf7ea;border-radius:12px;padding:5px 7px}.status.watch{color:#a96c06;background:#fff2d1}.telemetry-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}.telemetry-item{display:flex;align-items:center;gap:7px;border:1px solid #e7ece7;border-radius:12px;padding:9px 8px}.telemetry-icon{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}.telemetry-item.green .telemetry-icon{background:#e7f4e7;color:#338355}.telemetry-item.blue .telemetry-icon{background:#e7f4fc;color:#2d93cf}.telemetry-item.amber .telemetry-icon{background:#fff1d0;color:#d39618}.telemetry-item span,.telemetry-item strong{display:block}.telemetry-item span{font-size:8px;color:#73817c}.telemetry-item strong{font-size:11px;margin-top:2px}.live-small{display:flex;align-items:center;gap:4px;color:#2e8054!important;font-weight:800}.live-small i{width:7px;height:7px;border-radius:50%;background:#53c97c;box-shadow:0 0 0 3px #53c97c24}.ml-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.ml-grid>div{background:#fbfcfa;border:1px solid #e7ece7;border-radius:11px;padding:10px}.ml-grid span,.ml-grid b{display:block}.ml-grid span{font-size:8px;color:#74827d}.ml-grid b{font-size:12px;color:#244d40;margin-top:4px;overflow-wrap:anywhere}.payload-id{font-size:8px!important;background:#f0f4ef;border-radius:12px;padding:5px 7px;color:#60736b!important}.borewell-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}.borewell-info-grid>div{background:#fbfcfa;border:1px solid #e7ece7;border-radius:11px;padding:9px}.borewell-info-grid span,.borewell-info-grid b{display:block}.borewell-info-grid span{font-size:8px;color:#71807b}.borewell-info-grid b{font-size:10px;color:#244d40;margin-top:4px;overflow-wrap:anywhere}.advisory-card{padding:17px;min-height:385px;background:linear-gradient(145deg,#f1f8ee,#fbfcf8)}.advice-main{display:flex;align-items:flex-start;gap:10px;margin-top:18px}.advice-icon{width:48px;height:48px;border-radius:50%;background:#e4f2df;color:#4b965f;display:grid;place-items:center;flex:none}.advice-main p{margin:0;font-size:11px;line-height:1.75;color:#355a4d}.advice-list{display:grid;gap:10px;margin-top:18px}.advice-list span{display:flex;align-items:flex-start;gap:7px;font-size:9px;line-height:1.45;color:#4c675d}.advice-list svg{width:18px;height:18px;padding:4px;border-radius:50%;background:#e0f2df;color:#3f9460;flex:none}.keep-growing{margin-top:26px;padding-top:15px;border-top:1px solid #dce9dc;color:#397253;font-family:cursive;font-size:14px;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}.weather-card{overflow:hidden;background:linear-gradient(135deg,#d9effc,#f7fbf9);padding:16px}.weather-head>span{font-size:10px;color:#3b6157}.weather-temp{display:grid;grid-template-columns:35px auto;column-gap:9px;align-items:center;margin-top:8px}.weather-temp svg{grid-row:1 / span 2;color:#eda924}.weather-temp strong{font-size:20px}.weather-temp small{font-size:9px;color:#60736c}.weather-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #d8e6e8;margin-top:14px;padding-top:10px}.weather-stats div{padding:0 7px;border-right:1px solid #d8e6e8;text-align:center}.weather-stats div:last-child{border-right:0}.weather-stats span,.weather-stats b{display:block}.weather-stats span{font-size:8px;color:#5f716d}.weather-stats b{font-size:10px;margin-top:4px}.quick-card{padding:15px}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}.quick-grid a{min-height:70px;border:1px solid #e1e8e1;border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;background:#fff}.quick-grid svg{width:19px;height:19px;color:#3a815b}.quick-grid span{font-size:8px;color:#3f5c54;line-height:1.3}.alerts-card,.insights-card{padding:15px}.alert-row{display:flex;align-items:center;gap:9px;border:1px solid #e5ece5;background:#fbfdfb;border-radius:12px;padding:11px;margin-top:12px}.alert-icon{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#e1f4e3;color:#2f8556;font-weight:800}.alert-row b,.alert-row small{display:block}.alert-row b{font-size:10px}.alert-row small{font-size:8px;color:#74827d;margin-top:3px}.alert-fault{background:#fff8f2;border-color:#f0dfcf}.alert-fault .alert-icon{background:#ffe7d8;color:#a85634}.insight-box{display:flex;gap:9px;background:#eef7fb;border-radius:12px;padding:12px;margin-top:12px}.insight-icon{width:35px;height:35px;border-radius:50%;background:#e1f3e0;color:#4b965f;display:grid;place-items:center;flex:none}.insight-box b{font-size:10px}.insight-box p{margin:5px 0 0;font-size:8px;line-height:1.55;color:#5d7169}.future-line{display:flex;justify-content:flex-end;align-items:center;gap:4px;margin-top:12px;font-family:cursive;font-size:11px;color:#315f4a}
+@media(max-width:1180px){.dashboard-grid{grid-template-columns:minmax(0,1.7fr) minmax(235px,.8fr)}.right-column{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}.telemetry-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.sidebar{transform:translateX(-100%);transition:.25s;box-shadow:20px 0 40px rgba(27,70,53,.12)}.sidebar.open{transform:translateX(0)}.mobile-close{display:grid;place-items:center;position:absolute;right:10px;top:15px;border:0;background:#eef6ef;border-radius:10px;width:34px;height:34px;color:#2d604d}.content{margin-left:0;width:100%}.hero{height:auto;padding-bottom:14px}.hero-photo{height:205px;position:absolute}.topbar{height:205px;padding:17px 18px 85px;align-items:flex-start}.menu-btn{display:grid;place-items:center;border:0;background:#ffffffdf;width:40px;height:40px;border-radius:12px;color:#2a5a4b}.greeting h1{font-size:20px}.greeting p{font-size:11px}.sun-orb{width:43px;height:43px}.top-actions .location,.weather-mini{display:none!important}.metric-grid{position:relative;left:auto;right:auto;bottom:auto;padding:0 13px;grid-template-columns:repeat(2,1fr);gap:9px}.status-card{min-height:108px;padding:14px}.status-icon{width:45px;height:45px}.status-copy strong{font-size:22px}.page-inner{padding:13px}.dashboard-grid{grid-template-columns:1fr}.right-column{grid-column:auto;grid-template-columns:1fr}.middle-column{order:2}.main-column{order:1}.right-column{order:3}.below-farm{grid-template-columns:1fr}.telemetry-grid{grid-template-columns:repeat(3,1fr)}.ml-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.brand b{font-size:21px}.greeting{gap:8px}.greeting h1{font-size:17px}.greeting p{font-size:10px}.profile>div:not(.avatar),.profile>svg{display:none}.metric-grid{grid-template-columns:1fr 1fr}.status-card{display:block}.status-icon{margin-bottom:8px}.status-copy strong{font-size:20px}.status-copy small{font-size:8px}.farm-photo{height:300px}.farm-photo-title{left:12px;top:12px;font-size:13px;padding:8px 10px}.dynamic-water-label{left:auto;right:13px;bottom:38px}.farm-live{left:10px;bottom:11px}.digital-twin-pill{right:10px;bottom:10px}.telemetry-grid{grid-template-columns:1fr 1fr}.telemetry-item{padding:9px 7px}.ml-grid{grid-template-columns:1fr 1fr}.borewell-info-grid{grid-template-columns:1fr 1fr}.weather-stats span{font-size:7px}.weather-stats b{font-size:9px}.quick-grid{grid-template-columns:repeat(4,1fr)}.quick-grid span{font-size:7px}}
+.twin-page{min-height:100vh;background:linear-gradient(180deg,#f4faf4,#f8fbf7);color:var(--ink)}.twin-header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;background:rgba(255,255,255,.92);border-bottom:1px solid #e2e9e2;position:sticky;top:0;z-index:20}.back-link{display:flex;align-items:center;gap:7px;color:#3c6558;font-size:12px}.twin-title{display:flex;align-items:center;gap:9px}.twin-title b{display:block;font-size:14px}.twin-title small{display:block;color:#788781;font-size:9px;margin-top:2px}.mini-logo{width:36px;height:36px;border-radius:12px;background:#e6f4e7;color:#2e8156;display:grid;place-items:center;position:relative}.mini-logo svg:last-child{position:absolute;right:1px;bottom:2px}.twin-live-chip{font-size:9px;font-weight:800;color:#2f7c53;background:#e9f6ea;border-radius:20px;padding:8px 10px}.twin-wrap{max-width:1420px;margin:0 auto;padding:24px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(340px,.75fr);gap:18px}.twin-hero{overflow:hidden;background:#fff}.twin-hero-copy{padding:25px 27px 20px;background:linear-gradient(135deg,#eef8ef,#fbfdf9)}.twin-hero-copy h1{margin:7px 0 5px;font-size:28px;letter-spacing:-.7px}.twin-hero-copy p{margin:0;color:#657771;font-size:12px}.twin-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}.twin-badges span{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid #e1e9e1;border-radius:20px;padding:7px 9px;font-size:9px;color:#42675b}.twin-scene{height:585px;position:relative;overflow:hidden;background:linear-gradient(#9dd8f2 0 30%,#8db871 31% 42%,#6b9753 43% 48%,#7d6147 49% 100%)}.twin-sky{position:absolute;inset:0 0 70%}.twin-sun{position:absolute;left:45px;top:26px;font-size:42px;color:#efae2b}.twin-cloud{position:absolute;width:160px;height:42px;border-radius:50%;background:#ffffffa8;filter:blur(2px)}.c1{left:28%;top:45px}.c2{right:9%;top:85px;transform:scale(.7)}.twin-hills{position:absolute;left:-5%;right:-5%;top:23%;height:100px;background:#83aa74;clip-path:polygon(0 100%,14% 47%,25% 65%,43% 18%,56% 61%,72% 37%,100% 100%)}.twin-field{position:absolute;left:0;right:0;top:34%;height:16%;background:repeating-linear-gradient(164deg,#649550 0 22px,#7ba55d 23px 43px)}.crop{position:absolute;bottom:0;width:24%;height:60px;background:repeating-linear-gradient(90deg,transparent 0 9px,#3e7c40 10px 14px)}.crop1{left:5%}.crop2{left:43%}.crop3{right:4%}.starter-box{position:absolute;right:14%;top:25%;width:86px;height:58px;border-radius:7px;background:#e8e5d7;border:2px solid #7a806f;box-shadow:0 6px 10px #355c3730;z-index:4;padding:9px}.starter-light{width:8px;height:8px;border-radius:50%;background:#62d58a;box-shadow:0 0 0 3px #62d58a33;display:inline-block;margin-right:6px}.starter-box b{font-size:9px;color:#3b4e46}.starter-box small{display:block;font-size:7px;color:#2f8257;margin-top:4px}.ground-line{position:absolute;top:47%;left:0;right:0;height:8px;background:#554435}.borewell-cap{position:absolute;left:42%;top:39%;z-index:8}.cap-pipe{position:absolute;left:16px;top:10px;width:22px;height:52px;background:#d9edf1;border:4px solid #91aeb0}.cap-top{display:block;width:55px;height:17px;border-radius:9px;background:#456964}.soil{position:absolute;left:0;right:0}.soil-a{top:48%;height:14%;background:#6c543f}.soil-b{top:62%;height:18%;background:#846346}.soil-c{top:80%;height:20%;background:#70523b}.water-zone{position:absolute;left:0;right:0;bottom:0;height:37%;background:linear-gradient(#2a9ed6dd,#177caeea);transition:top .5s ease;z-index:3;overflow:hidden}.water-ripple{position:absolute;left:4%;right:4%;height:12px;border-top:2px solid #ffffff55;border-radius:50%}.r1{top:25px}.r2{top:56px}.well-shaft{position:absolute;z-index:6;left:42.4%;top:50%;width:27px;background:#d8ecf0;border-left:5px solid #9bb4b6;border-right:5px solid #9bb4b6;transition:height .5s ease}.pipe-inner{position:absolute;left:7px;top:0;bottom:0;width:3px;background:#b9d9df}.pump-unit{position:absolute;left:-12px;bottom:16px;width:48px;height:30px;background:#345d58;border-radius:5px;box-shadow:0 5px 0 #274943}.pump-unit:after{content:"";position:absolute;right:-12px;top:7px;width:12px;height:16px;border-radius:4px;background:#52766f}.pump-unit span{position:absolute;left:13px;top:-7px;width:24px;height:8px;border-radius:4px;background:#5e8179}.pump-unit i{position:absolute;right:4px;top:8px;width:7px;height:7px;border-radius:50%;background:#68d48c;box-shadow:0 0 0 4px #68d48c25}.water-marker{position:absolute;right:12%;z-index:9;background:#1d7196dd;color:white;border-radius:10px;padding:9px 11px;font-size:10px;display:flex;align-items:center;gap:6px;transition:top .5s ease}.water-marker b{font-size:13px;display:block}.depth-line{position:absolute;left:37%;top:53%;border-left:1px dashed #ffffffb5;z-index:7;transition:height .5s ease}.depth-line span{position:absolute;left:-22px;top:40%;background:#ffffffd9;color:#49655c;padding:4px 6px;border-radius:6px;font-size:8px}.twin-live{position:absolute;left:22px;bottom:18px;z-index:10;background:#ffffffdb;border-radius:20px;padding:8px 10px;font-size:9px;display:flex;align-items:center;gap:5px}.twin-live.ok{color:#2e7650}.twin-live.fault{color:#a74d2b}.twin-sidebar{display:grid;gap:14px;align-content:start}.twin-status-card,.twin-data-card,.twin-ml-card{padding:18px}.status-big{display:flex;align-items:center;gap:8px;margin-top:15px;font-size:13px}.status-dot{width:10px;height:10px;background:#58cb82;border-radius:50%;box-shadow:0 0 0 4px #58cb8225}.fault-dot{background:#d66d45;box-shadow:0 0 0 4px #d66d4525}.muted{font-size:10px;color:#73827c}.twin-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}.twin-data{display:flex;align-items:center;gap:8px;border:1px solid #e6ebe6;border-radius:11px;padding:9px}.data-icon{width:30px;height:30px;border-radius:50%;display:grid;place-items:center}.twin-data.green .data-icon{background:#e6f5e3;color:#338355}.twin-data.blue .data-icon{background:#e7f4fc;color:#2d93cf}.twin-data.amber .data-icon{background:#fff2d0;color:#d39618}.twin-data span,.twin-data strong{display:block}.twin-data span{font-size:8px;color:#73817c}.twin-data strong{font-size:12px;margin-top:2px}.ml-rows{display:grid;gap:7px;margin-top:13px}.ml-rows>div{display:flex;justify-content:space-between;gap:10px;padding-bottom:7px;border-bottom:1px solid #edf0ed}.ml-rows>div:last-child{border-bottom:0;padding-bottom:0}.ml-rows span{font-size:9px;color:#6f7f79}.ml-rows b{font-size:10px;color:#244d40}.twin-footer-note{background:#edf7ed;border:1px solid #dcebdc;border-radius:13px;padding:11px 12px;color:#397253;font-size:9px;display:flex;align-items:center;gap:8px}.twin-footer-note svg{flex:none}
+@media (max-width:1150px){.metric-grid{grid-template-columns:repeat(2,1fr)}.main-grid{grid-template-columns:1fr}.right-column{grid-template-columns:repeat(2,minmax(0,1fr))}.advisory-card{grid-row:span 2}.telemetry-grid{grid-template-columns:repeat(3,1fr)}.twin-wrap{grid-template-columns:1fr}.twin-sidebar{grid-template-columns:repeat(2,1fr)}.twin-footer-note{grid-column:1/-1}}
+@media (max-width:820px){.sidebar{transform:translateX(-100%);transition:.25s;box-shadow:20px 0 40px #1b46351a}.sidebar.open{transform:translateX(0)}.mobile-close{display:grid;place-items:center;position:absolute;right:10px;top:15px;border:0;background:#eef6ef;border-radius:10px;width:34px;height:34px;color:#2d604d}.content{margin-left:0;width:100%}.topbar{height:auto;min-height:126px;padding:18px 17px 10px;gap:10px}.menu-btn{display:grid;place-items:center;border:0;background:#ffffffd9;width:40px;height:40px;border-radius:12px;color:#2a5a4b}.greeting h1{font-size:20px}.greeting p{font-size:11px}.sun-orb{width:43px;height:43px}.top-actions>span{display:none}.profile{border-left:0;padding-left:0}.page-inner{padding:13px}.metric-grid{gap:9px}.metric-card{padding:14px;min-height:108px}.metric-icon{width:45px;height:45px}.metric-copy strong{font-size:21px}.metric-copy small{font-size:9px}.lower-grid{grid-template-columns:1fr}.right-column{grid-template-columns:1fr}.advisory-card{grid-row:auto}.telemetry-grid{grid-template-columns:repeat(2,1fr)}.ml-grid{grid-template-columns:repeat(2,1fr)}.farm-visual{height:350px}.twin-header{padding:0 15px}.twin-wrap{padding:13px}.twin-sidebar{grid-template-columns:1fr}.twin-scene{height:480px}.twin-hero-copy h1{font-size:23px}}
+@media (max-width:540px){.metric-grid{grid-template-columns:1fr 1fr}.metric-card{display:block}.metric-icon{margin-bottom:8px}.topbar{align-items:flex-start}.greeting{gap:9px}.greeting h1{font-size:17px}.greeting p{font-size:10px}.profile>div:not(.avatar){display:none}.profile svg{display:none}.hero-background{height:270px}.farm-visual{height:300px}.scene-title{font-size:13px}.marker-field1,.marker-field2{display:none}.soil-cut{left:25%;right:13%}.marker-bore{left:33%}.telemetry-grid{grid-template-columns:1fr 1fr}.telemetry-item{padding:9px 7px}.telemetry-item strong{font-size:11px}.ml-grid{grid-template-columns:1fr 1fr}.twin-badges{gap:5px}.twin-badges span{font-size:8px}.twin-scene{height:390px}.water-marker{right:4%;font-size:8px}.well-shaft{left:42%;}.twin-title small{display:none}.twin-live-chip{font-size:8px}.twin-hero-copy{padding:19px}.twin-hero-copy h1{font-size:21px}.twin-hero-copy p{line-height:1.5}}
+.borewell-info-card{padding:18px}.borewell-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:13px}.borewell-info-grid>div{background:#fbfcfa;border:1px solid #e7ece7;border-radius:12px;padding:10px}.borewell-info-grid span,.borewell-info-grid b{display:block}.borewell-info-grid span{font-size:9px;color:#71807b}.borewell-info-grid b{font-size:11px;color:#244d40;margin-top:4px;overflow-wrap:anywhere}@media(max-width:820px){.borewell-info-grid{grid-template-columns:1fr 1fr}}@media(max-width:540px){.borewell-info-grid{grid-template-columns:1fr}}
+.farm-twin-button{position:absolute;right:18px;bottom:18px;z-index:12;background:#fff;color:#25684b;border:1px solid #dce9dc;border-radius:22px;padding:9px 11px;display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;box-shadow:0 8px 18px rgba(38,75,53,.12)}.farm-twin-button:hover{background:#f2f9f2}@media(max-width:540px){.farm-twin-button{right:10px;bottom:10px}}
+/* Natural Digital Twin scene */
+.natural-twin-scene{background:#dcefe7!important;min-height:560px!important;position:relative;overflow:hidden;border-radius:0 0 16px 16px}.twin-scene-photo{position:absolute;inset:0;background:url('/assets/farm-scene.jpg') center/cover no-repeat}.twin-scene-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),transparent 48%,rgba(11,66,47,.10));pointer-events:none}.twin-scene-label{position:absolute;z-index:10;right:11%;bottom:24%;display:flex;align-items:center;gap:7px;background:rgba(24,102,137,.88);color:#fff;border-radius:10px;padding:9px 11px;font-size:10px;box-shadow:0 8px 18px rgba(20,76,98,.18)}.twin-scene-label b{font-size:14px}.twin-live-value{position:absolute;z-index:10;left:20px;bottom:18px;background:rgba(255,255,255,.92);border-radius:20px;padding:8px 11px;display:flex;align-items:center;gap:7px;font-size:10px;color:#2e7650;box-shadow:0 5px 14px rgba(35,72,53,.12)}.ok-pulse,.fault-pulse{width:8px;height:8px;border-radius:50%;background:#52c77a;box-shadow:0 0 0 4px rgba(82,199,122,.18)}.fault-pulse{background:#d76e48;box-shadow:0 0 0 4px rgba(215,110,72,.18)}.twin-pump-badge{position:absolute;z-index:10;left:20px;top:20px;background:rgba(255,255,255,.93);color:#245b48;border-radius:12px;padding:9px 11px;display:flex;align-items:center;gap:6px;font-size:10px;box-shadow:0 5px 14px rgba(35,72,53,.12)}.twin-pump-badge b{color:#2f8054}.twin-depth-line{position:absolute;z-index:8;left:48%;top:39%;height:33%;border-left:1px dashed rgba(255,255,255,.8)}.twin-depth-value{position:absolute;z-index:9;left:calc(48% - 16px);top:57%;background:rgba(255,255,255,.88);color:#3e6258;border-radius:7px;padding:4px 6px;font-size:8px}@media(max-width:700px){.natural-twin-scene{min-height:430px!important}.twin-depth-line{left:45%;height:31%}.twin-depth-value{left:calc(45% - 14px)}.twin-scene-label{right:5%;bottom:25%}}
+/* =========================================================
+   NEELDHAARA - DARK NAVY / BLUE GOVERNMENT THEME
+   ========================================================= */
+
+/* ---------- GLOBAL COLORS ---------- */
+
+:root {
+  --ink: #eef5f8;
+  --deep: #0b2940;
+  --muted: #91aabd;
+  --green: #55d477;
+  --green2: #63dc83;
+  --green-soft: #123d3a;
+  --blue: #2998d4;
+  --blue-soft: #123c57;
+  --amber: #f0b83f;
+  --amber-soft: #40381e;
+  --paper: #071a2b;
+  --line: #1b3d55;
+  --shadow: 0 8px 24px rgba(0, 0, 0, .28);
+}
+
+
+/* ---------- MAIN PAGE ---------- */
+
+html,
+body {
+  background: #071a2b !important;
+  color: #eef5f8 !important;
+}
+
+body {
+  background: #071a2b !important;
+}
+
+.app-shell {
+  background: #071a2b !important;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+  background: #061a2d !important;
+  border-right: 1px solid #173b55 !important;
+}
+
+.brand b {
+  color: #f2f7fa !important;
+}
+
+.brand span {
+  color: #8da7b8 !important;
+}
+
+.brand-mark {
+  background: #12394a !important;
+  color: #63dc83 !important;
+}
+
+.nav-item {
+  color: #9db5c5 !important;
+}
+
+.nav-item:hover {
+  background: #10334b !important;
+  color: #ffffff !important;
+}
+
+.nav-item.active {
+  background: linear-gradient(
+    90deg,
+    #124338,
+    #10354a
+  ) !important;
+  color: #61dc82 !important;
+  font-weight: 700 !important;
+}
+
+.twin-nav {
+  background: #10364d !important;
+  border: 1px solid #1c4b65 !important;
+}
+
+.new-badge {
+  background: #2f8b5b !important;
+  color: #ffffff !important;
+}
+
+.sidebar-art {
+  background: #0c293c !important;
+}
+
+.sidebar-art:after {
+  background: linear-gradient(
+    180deg,
+    transparent 25%,
+    rgba(6, 26, 45, .88) 100%
+  ) !important;
+}
+
+.sidebar-slogan {
+  color: #72cf8b !important;
+}
+
+
+/* ---------- MAIN CONTENT ---------- */
+
+.content {
+  background: #071a2b !important;
+}
+
+
+/* ---------- TOP HERO / HEADER ---------- */
+
+.hero {
+  background: #081d30 !important;
+}
+
+.hero-photo {
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(7, 26, 43, .72),
+      rgba(7, 26, 43, .90)
+    ),
+    url('/assets/farm-header.jpg') !important;
+
+  background-size: cover !important;
+  background-position: center top !important;
+}
+
+.hero:after {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(7, 26, 43, .95)
+  ) !important;
+}
+
+
+/* ---------- GREETING ---------- */
+
+.greeting h1 {
+  color: #f2f7fa !important;
+}
+
+.greeting p {
+  color: #91aabd !important;
+}
+
+.top-actions {
+  color: #a5bac8 !important;
+}
+
+.profile {
+  border-left-color: #25455b !important;
+}
+
+.profile b {
+  color: #f2f7fa !important;
+}
+
+.profile small {
+  color: #8da5b5 !important;
+}
+
+.avatar {
+  background: #123d5a !important;
+  color: #5fd57e !important;
+  border-color: #28526c !important;
+}
+
+
+/* ---------- WEATHER / SUN ---------- */
+
+.sun-orb {
+  background: #3d3922 !important;
+  color: #f0bd3f !important;
+}
+
+
+/* ---------- TOP STATUS CARDS ---------- */
+
+.status-card,
+.metric-card {
+  background: #0d2940 !important;
+  border: 1px solid #1a4059 !important;
+  box-shadow: 0 9px 25px rgba(0, 0, 0, .25) !important;
+}
+
+.status-copy span,
+.metric-copy span {
+  color: #91aabd !important;
+}
+
+.status-copy strong,
+.metric-copy strong {
+  color: #f2f7fa !important;
+}
+
+.status-copy small,
+.metric-copy small {
+  background: #123c3a !important;
+  color: #61d77f !important;
+}
+
+.status-card.blue .status-icon {
+  background: #123e5d !important;
+  color: #50b9f0 !important;
+}
+
+.status-card.green .status-icon {
+  background: #12443c !important;
+  color: #62db82 !important;
+}
+
+.status-card.amber .status-icon {
+  background: #40371e !important;
+  color: #f0b83f !important;
+}
+
+.status-card.blue .status-copy small {
+  background: #123e5d !important;
+  color: #48b4ed !important;
+}
+
+.status-card.amber .status-copy small {
+  background: #40371e !important;
+  color: #f0b83f !important;
+}
+
+
+/* ---------- ALL CARDS ---------- */
+
+.card,
+.trend-card,
+.fields-card,
+.telemetry-card,
+.ml-card,
+.borewell-info-card,
+.advisory-card,
+.insight-card,
+.weather-card,
+.quick-actions-card,
+.alert-card {
+  background: #0d2940 !important;
+  border-color: #1a4059 !important;
+  color: #eef5f8 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25) !important;
+}
+
+
+/* ---------- SECTION HEADINGS ---------- */
+
+.section-head h2 {
+  color: #f2f7fa !important;
+}
+
+.section-head > span {
+  color: #8da6b7 !important;
+}
+
+.eyebrow {
+  color: #61d77f !important;
+}
+
+
+/* ---------- WATER LEVEL CHART ---------- */
+
+.water-chart text {
+  fill: #8da6b7 !important;
+}
+
+.grid-line {
+  stroke: #27465b !important;
+}
+
+.chart-line {
+  stroke: #35a4dc !important;
+}
+
+.chart-dot {
+  fill: #0d2940 !important;
+  stroke: #35a4dc !important;
+}
+
+.chart-pill {
+  fill: #2998d4 !important;
+}
+
+.pill-text {
+  fill: #ffffff !important;
+}
+
+.demo-note {
+  color: #7f99aa !important;
+}
+
+
+/* ---------- SELECT / SMALL CONTROLS ---------- */
+
+.select-look {
+  background: #10334b !important;
+  border-color: #214962 !important;
+  color: #b6c9d5 !important;
+}
+
+
+/* ---------- FARM / DIGITAL TWIN IMAGE CARD ---------- */
+
+.farm-card {
+  background: #0d2940 !important;
+}
+
+.farm-photo {
+  background-color: #0b2438 !important;
+}
+
+.farm-photo:after {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 26, 43, .10),
+    transparent 50%,
+    rgba(5, 24, 40, .45)
+  ) !important;
+}
+
+.farm-photo-title {
+  background: rgba(7, 26, 43, .90) !important;
+  color: #f2f7fa !important;
+  border: 1px solid #28506a !important;
+}
+
+.dynamic-water-label {
+  background: rgba(25, 103, 143, .94) !important;
+}
+
+.farm-live {
+  background: rgba(7, 26, 43, .90) !important;
+  color: #62d984 !important;
+}
+
+.digital-twin-pill,
+.farm-twin-button {
+  background: #0e3b51 !important;
+  color: #68dc88 !important;
+  border-color: #286078 !important;
+}
+
+.digital-twin-pill:hover,
+.farm-twin-button:hover {
+  background: #15475d !important;
+}
+
+
+/* ---------- FIELD LIST ---------- */
+
+.field-row {
+  border-top-color: #203f53 !important;
+}
+
+.field-row b {
+  color: #eef5f8 !important;
+}
+
+.field-row small {
+  color: #819aaa !important;
+}
+
+.status {
+  background: #123e35 !important;
+  color: #61d77f !important;
+}
+
+.status.watch {
+  background: #40371e !important;
+  color: #f0b83f !important;
+}
+
+
+/* ---------- ELECTRICAL TELEMETRY ---------- */
+
+.telemetry-item {
+  background: #0b253a !important;
+  border-color: #1d4057 !important;
+}
+
+.telemetry-item span {
+  color: #819aaa !important;
+}
+
+.telemetry-item strong {
+  color: #eef5f8 !important;
+}
+
+.telemetry-item.green .telemetry-icon {
+  background: #124239 !important;
+  color: #5fd77e !important;
+}
+
+.telemetry-item.blue .telemetry-icon {
+  background: #123d58 !important;
+  color: #45afe8 !important;
+}
+
+.telemetry-item.amber .telemetry-icon {
+  background: #40371e !important;
+  color: #f0b83f !important;
+}
+
+.live-small {
+  color: #62d984 !important;
+}
+
+
+/* ---------- ML ANALYTICS ---------- */
+
+.ml-grid > div {
+  background: #0b253a !important;
+  border-color: #1d4057 !important;
+}
+
+.ml-grid span {
+  color: #819aaa !important;
+}
+
+.ml-grid b {
+  color: #eef5f8 !important;
+}
+
+.payload-id {
+  background: #123247 !important;
+  color: #91aabd !important;
+}
+
+
+/* ---------- BOREWELL INFORMATION ---------- */
+
+.borewell-info-grid > div {
+  background: #0b253a !important;
+  border-color: #1d4057 !important;
+}
+
+.borewell-info-grid span {
+  color: #819aaa !important;
+}
+
+.borewell-info-grid b {
+  color: #eef5f8 !important;
+}
+
+
+/* ---------- INSIGHT / INFORMATION CARDS ---------- */
+
+.insight-card,
+.advisory-card,
+.weather-card,
+.quick-actions-card,
+.alert-card {
+  background: #0d2940 !important;
+}
+
+.insight-card h2,
+.advisory-card h2,
+.weather-card h2,
+.quick-actions-card h2,
+.alert-card h2 {
+  color: #f2f7fa !important;
+}
+
+.insight-card p,
+.advisory-card p,
+.weather-card p,
+.quick-actions-card p,
+.alert-card p {
+  color: #91aabd !important;
+}
+
+
+/* ---------- QUICK ACTION BUTTONS ---------- */
+
+.quick-action,
+.action-card,
+.quick-actions-card button {
+  background: #102f46 !important;
+  border-color: #23485f !important;
+  color: #eaf2f6 !important;
+}
+
+.quick-action:hover,
+.action-card:hover,
+.quick-actions-card button:hover {
+  background: #15405a !important;
+}
+
+.quick-action svg,
+.action-card svg {
+  color: #63d982 !important;
+}
+
+
+/* ---------- ALERTS ---------- */
+
+.alert-item,
+.alert-row {
+  background: #0b253a !important;
+  border-color: #1e4158 !important;
+  color: #eef5f8 !important;
+}
+
+.alert-item span,
+.alert-row span {
+  color: #91aabd !important;
+}
+
+
+/* ---------- DIGITAL TWIN ---------- */
+
+.natural-twin-scene {
+  background: #071a2b !important;
+}
+
+.twin-scene-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 26, 43, .10),
+    transparent 48%,
+    rgba(5, 20, 34, .55)
+  ) !important;
+}
+
+.twin-pump-badge {
+  background: rgba(7, 26, 43, .90) !important;
+  color: #eef5f8 !important;
+  border: 1px solid #28506a !important;
+}
+
+.twin-pump-badge b {
+  color: #62d984 !important;
+}
+
+.twin-live-value {
+  background: rgba(7, 26, 43, .90) !important;
+  color: #62d984 !important;
+}
+
+.twin-scene-label {
+  background: rgba(24, 102, 137, .95) !important;
+}
+
+.twin-depth-value {
+  background: #10354b !important;
+  color: #d8e6ed !important;
+}
+
+.twin-status-card,
+.twin-data-card,
+.twin-ml-card {
+  background: #0d2940 !important;
+  border-color: #1a4059 !important;
+}
+
+.status-big {
+  color: #eef5f8 !important;
+}
+
+.muted {
+  color: #819aaa !important;
+}
+
+.twin-data {
+  background: #0b253a !important;
+  border-color: #1d4057 !important;
+}
+
+.twin-data span {
+  color: #819aaa !important;
+}
+
+.twin-data strong {
+  color: #eef5f8 !important;
+}
+
+.twin-data.green .data-icon {
+  background: #124239 !important;
+  color: #61d77f !important;
+}
+
+.twin-data.blue .data-icon {
+  background: #123d58 !important;
+  color: #45afe8 !important;
+}
+
+.twin-data.amber .data-icon {
+  background: #40371e !important;
+  color: #f0b83f !important;
+}
+
+.ml-rows > div {
+  border-bottom-color: #203f53 !important;
+}
+
+.ml-rows span {
+  color: #819aaa !important;
+}
+
+.ml-rows b {
+  color: #eef5f8 !important;
+}
+
+.twin-footer-note {
+  background: #103b3a !important;
+  border-color: #24564d !important;
+  color: #70d88a !important;
+}
+
+
+/* ---------- GENERAL TEXT OVERRIDES ---------- */
+
+.card p,
+.card span,
+.card small {
+  color: #91aabd;
+}
+
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card strong,
+.card b {
+  color: #eef5f8;
+}
+
+
+/* ---------- MOBILE MENU ---------- */
+
+.mobile-close {
+  background: #10334b !important;
+  color: #b9ccd7 !important;
+}
+
+.menu-btn {
+  background: #10334b !important;
+  color: #b9ccd7 !important;
+}
+
+
+/* ---------- SCROLLBAR ---------- */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #061a2d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c4058;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #28617e;
+}
