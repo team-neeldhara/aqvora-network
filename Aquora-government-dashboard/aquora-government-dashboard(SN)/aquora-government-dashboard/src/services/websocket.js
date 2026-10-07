@@ -1,59 +1,139 @@
-let socket=null,reconnectTimer=null,manuallyClosed=false;
+let socket = null;
+let reconnectTimer = null;
+let manuallyClosed = false;
 
-export function connectGovernmentWebSocket(callbacks={}){
-  manuallyClosed=false;
+const WS_URL = import.meta.env.VITE_WS_URL;
 
-  if(socket?.readyState===WebSocket.OPEN)return socket;
+export function connectGovernmentWebSocket(callbacks = {}) {
+  manuallyClosed = false;
 
-  const url=import.meta.env.VITE_WS_URL||"ws://10.207.191.50:8081/ws";
+  // Already connected
+  if (socket?.readyState === WebSocket.OPEN) {
+    return socket;
+  }
 
-  try{
-    socket=new WebSocket(url);
-  }catch(e){
-    callbacks.onError?.(e);
-    schedule(callbacks);
+  // Check whether the environment variable exists
+  if (!WS_URL) {
+    const error = new Error(
+      "VITE_WS_URL is not defined. Check your .env file."
+    );
+
+    console.error("Government WebSocket:", error);
+    callbacks.onError?.(error);
+
+    scheduleReconnect(callbacks);
     return null;
   }
 
-  socket.onopen=()=>callbacks.onOpen?.();
+  console.log("Connecting to Government WebSocket:", WS_URL);
 
-  socket.onmessage=e=>{
-    try{
-      callbacks.onMessage?.(JSON.parse(e.data));
-    }catch(err){
-      callbacks.onError?.(err);
+  try {
+    socket = new WebSocket(WS_URL);
+  } catch (error) {
+    console.error("Failed to create WebSocket:", error);
+
+    callbacks.onError?.(error);
+    scheduleReconnect(callbacks);
+
+    return null;
+  }
+
+  // -------------------------
+  // CONNECTION SUCCESS
+  // -------------------------
+  socket.onopen = () => {
+    console.log("Government WebSocket CONNECTED");
+
+    callbacks.onOpen?.();
+  };
+
+  // -------------------------
+  // MESSAGE RECEIVED
+  // -------------------------
+  socket.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+
+      console.log("Government WebSocket message:", data);
+
+      callbacks.onMessage?.(data);
+    } catch (error) {
+      console.error(
+        "Government WebSocket received invalid JSON:",
+        event.data
+      );
+
+      callbacks.onError?.(error);
     }
   };
 
-  socket.onerror=e=>callbacks.onError?.(e);
+  // -------------------------
+  // ERROR
+  // -------------------------
+  socket.onerror = (event) => {
+    console.error("Government WebSocket ERROR:", event);
 
-  socket.onclose=e=>{
-    socket=null;
-    callbacks.onClose?.(e);
-    if(!manuallyClosed)schedule(callbacks);
+    callbacks.onError?.(event);
+  };
+
+  // -------------------------
+  // CONNECTION CLOSED
+  // -------------------------
+  socket.onclose = (event) => {
+    console.warn(
+      "Government WebSocket CLOSED.",
+      "Code:",
+      event.code,
+      "Reason:",
+      event.reason || "No reason provided"
+    );
+
+    socket = null;
+
+    callbacks.onClose?.(event);
+
+    // Automatically reconnect unless
+    // the application intentionally closed it
+    if (!manuallyClosed) {
+      scheduleReconnect(callbacks);
+    }
   };
 
   return socket;
 }
 
-function schedule(c){
-  if(reconnectTimer||manuallyClosed)return;
+// -------------------------
+// RECONNECT
+// -------------------------
+function scheduleReconnect(callbacks) {
+  if (reconnectTimer || manuallyClosed) {
+    return;
+  }
 
-  reconnectTimer=setTimeout(()=>{
-    reconnectTimer=null;
-    connectGovernmentWebSocket(c);
-  },5000);
+  console.log("WebSocket reconnecting in 5 seconds...");
+
+  reconnectTimer = setTimeout(() => {
+    reconnectTimer = null;
+
+    connectGovernmentWebSocket(callbacks);
+  }, 5000);
 }
 
-export function disconnectGovernmentWebSocket(){
-  manuallyClosed=true;
+// -------------------------
+// DISCONNECT
+// -------------------------
+export function disconnectGovernmentWebSocket() {
+  console.log("Manually closing Government WebSocket.");
 
-  if(reconnectTimer)clearTimeout(reconnectTimer);
+  manuallyClosed = true;
 
-  reconnectTimer=null;
+  if (reconnectTimer) {
+    clearTimeout(reconnectTimer);
+    reconnectTimer = null;
+  }
 
-  if(socket){
+  if (socket) {
     socket.close();
-    socket=null;
+    socket = null;
   }
 }
